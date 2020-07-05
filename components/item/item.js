@@ -1,11 +1,14 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-const Item = ({ content }) => {
+const Item = ({ content, onPress }) => {
   return (
-    <TouchableOpacity style={styles.itemContainer}>
+    <TouchableOpacity
+      style={styles.itemContainer}
+      onPress={() => onPress(content.key)}
+    >
       <Text style={{ textTransform: "capitalize", fontSize: 15 }}>
-        {content}
+        {content.target}
       </Text>
     </TouchableOpacity>
   );
@@ -18,5 +21,6 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: "pink",
     marginBottom: 15,
+    borderRadius: 5,
   },
 });
