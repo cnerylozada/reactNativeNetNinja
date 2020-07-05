@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   inputContainer: {
+    borderRadius: 3,
     borderWidth: 1,
     borderColor: "gray",
     paddingVertical: 5,
