@@ -1,21 +1,50 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+  Button,
+  TextInput,
+} from "react-native";
 
 export default function App() {
+  const [person, setPerson] = useState({ name: "cristh", age: "26" });
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={{ marginBottom: 10 }}>
+        <TextInput
+          style={styles.input}
+          value={person.name}
+          onChangeText={(value) => setPerson({ ...person, name: value })}
+        />
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          value={person.age}
+          onChangeText={(value) => setPerson({ ...person, age: value })}
+        />
+        <Text>My new name is: {person.name}</Text>
+        <Text>My new age is: {person.age}</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    paddingHorizontal: 10,
+  },
+  input: {
+    padding: 5,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: "gray",
   },
 });
