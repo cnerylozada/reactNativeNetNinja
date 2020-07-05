@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Platform, StatusBar } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+  StatusBar,
+  ScrollView,
+} from "react-native";
 
 export default function App() {
   const [people, setPeople] = useState([
@@ -17,7 +24,15 @@ export default function App() {
   ]);
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <ScrollView>
+        {people.map((_) => (
+          <View key={_.key} style={styles.item}>
+            <Text style={{ textTransform: "capitalize", fontSize: 20 }}>
+              {_.name}
+            </Text>
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 }
@@ -26,5 +41,11 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    paddingHorizontal: 15,
+  },
+  item: {
+    backgroundColor: "lightgray",
+    marginBottom: 15,
+    padding: 20,
   },
 });
