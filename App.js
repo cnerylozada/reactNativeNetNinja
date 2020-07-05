@@ -1,24 +1,25 @@
 import React from "react";
 import {
   StyleSheet,
-  Text,
-  View,
   Platform,
   StatusBar,
   FlatList,
+  SafeAreaView,
+  View,
 } from "react-native";
 import { targets } from "./data/target";
 import Item from "./components/item/item";
+import SubmitSection from "./components/submit_section/submit_section";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={styles.container}>
+      <SubmitSection />
       <FlatList
         data={targets}
         renderItem={({ item }) => <Item content={item.target} />}
       />
-    </View>
+    </SafeAreaView>
   );
 }
 
