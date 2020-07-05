@@ -6,6 +6,7 @@ import {
   Platform,
   StatusBar,
   ScrollView,
+  FlatList,
 } from "react-native";
 
 export default function App() {
@@ -24,7 +25,18 @@ export default function App() {
   ]);
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <FlatList
+        data={people}
+        renderItem={({ item }) => (
+          <View style={styles.item}>
+            <Text style={{ textTransform: "capitalize", fontSize: 20 }}>
+              {item.name}
+            </Text>
+          </View>
+        )}
+      />
+
+      {/* <ScrollView>
         {people.map((_) => (
           <View key={_.key} style={styles.item}>
             <Text style={{ textTransform: "capitalize", fontSize: 20 }}>
@@ -32,7 +44,7 @@ export default function App() {
             </Text>
           </View>
         ))}
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 }
