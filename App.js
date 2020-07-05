@@ -7,6 +7,8 @@ import {
   StatusBar,
   ScrollView,
   FlatList,
+  TouchableHighlight,
+  TouchableOpacity,
 } from "react-native";
 
 export default function App() {
@@ -23,16 +25,26 @@ export default function App() {
     { key: "10", name: "ana" },
     { key: "111", name: "esther" },
   ]);
+
+  const pressHandler = (itemKey) => {
+    setPeople((prePeople) => {
+      return prePeople.filter((_) => _.key != itemKey);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
         data={people}
         renderItem={({ item }) => (
-          <View style={styles.item}>
+          <TouchableOpacity
+            style={styles.item}
+            onPress={() => pressHandler(item.key)}
+          >
             <Text style={{ textTransform: "capitalize", fontSize: 20 }}>
               {item.name}
             </Text>
-          </View>
+          </TouchableOpacity>
         )}
       />
 
@@ -56,7 +68,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   item: {
-    backgroundColor: "lightgray",
+    backgroundColor: "pink",
     marginBottom: 15,
     padding: 20,
   },
