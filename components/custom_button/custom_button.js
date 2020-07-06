@@ -1,9 +1,12 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-const CustomButton = ({ title, value }) => {
+const CustomButton = ({ title, dataToSubmit, onAdd }) => {
   return (
-    <TouchableOpacity style={styles.buttonContainer}>
+    <TouchableOpacity
+      style={styles.buttonContainer}
+      onPress={() => onAdd(dataToSubmit)}
+    >
       <Text style={{ color: "white", textAlign: "center" }}>{title}</Text>
     </TouchableOpacity>
   );

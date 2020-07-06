@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet, TextInput } from "react-native";
 import CustomButton from "../custom_button/custom_button";
 
-const SubmitSection = () => {
+const SubmitSection = ({ onAdd }) => {
   const [target, setInput] = useState("");
 
   return (
@@ -13,7 +13,7 @@ const SubmitSection = () => {
         onChangeText={(value) => setInput(value)}
         placeholder={"Enter a target ..."}
       />
-      <CustomButton title="Add" />
+      <CustomButton title="Add" dataToSubmit={target} onAdd={onAdd} />
     </View>
   );
 };

@@ -21,11 +21,20 @@ export default function App() {
     });
   };
 
+  const addNewTarget = (newTarget) => {
+    setTargets((prevTargets) => {
+      return [
+        { key: Math.random().toString(), target: newTarget },
+        ...prevTargets,
+      ];
+    });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Header></Header>
       <View style={{ paddingHorizontal: 15, marginTop: 5 }}>
-        <SubmitSection />
+        <SubmitSection onAdd={addNewTarget} />
         <FlatList
           data={targets}
           renderItem={({ item }) => (
