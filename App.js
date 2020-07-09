@@ -7,6 +7,8 @@ import {
   SafeAreaView,
   View,
   Alert,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { targets as groupOfTargets } from "./data/target";
 import Item from "./components/item/item";
@@ -41,18 +43,20 @@ export default function App() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Header></Header>
-      <View style={{ paddingHorizontal: 15, marginTop: 5 }}>
-        <SubmitSection onAdd={addNewTarget} />
-        <FlatList
-          data={targets}
-          renderItem={({ item }) => (
-            <Item onPress={filterHandler} content={item} />
-          )}
-        />
-      </View>
-    </SafeAreaView>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <SafeAreaView style={styles.container}>
+        <Header></Header>
+        <View style={{ paddingHorizontal: 15, marginTop: 5 }}>
+          <SubmitSection onAdd={addNewTarget} />
+          <FlatList
+            data={targets}
+            renderItem={({ item }) => (
+              <Item onPress={filterHandler} content={item} />
+            )}
+          />
+        </View>
+      </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }
 
