@@ -6,6 +6,7 @@ import {
   FlatList,
   SafeAreaView,
   View,
+  Alert,
 } from "react-native";
 import { targets as groupOfTargets } from "./data/target";
 import Item from "./components/item/item";
@@ -22,12 +23,21 @@ export default function App() {
   };
 
   const addNewTarget = (newTarget) => {
-    setTargets((prevTargets) => {
-      return [
-        { key: Math.random().toString(), target: newTarget },
-        ...prevTargets,
-      ];
-    });
+    if (newTarget.length > 3) {
+      setTargets((prevTargets) => {
+        return [
+          { key: Math.random().toString(), target: newTarget },
+          ...prevTargets,
+        ];
+      });
+    } else {
+      Alert.alert("Input error", "Todo task should has 3 chrs at least!", [
+        {
+          text: "Ok",
+          onPress: () => console.log("ok button in alert was pressed"),
+        },
+      ]);
+    }
   };
 
   return (
