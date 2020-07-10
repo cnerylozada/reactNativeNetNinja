@@ -46,9 +46,16 @@ export default function App() {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={styles.container}>
         <Header></Header>
-        <View style={{ paddingHorizontal: 15, marginTop: 5 }}>
+        <View
+          style={{
+            paddingHorizontal: 15,
+            marginTop: 5,
+            flex: 1,
+          }}
+        >
           <SubmitSection onAdd={addNewTarget} />
           <FlatList
+            style={styles.taskList}
             data={targets}
             renderItem={({ item }) => (
               <Item onPress={filterHandler} content={item} />
@@ -62,6 +69,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });
