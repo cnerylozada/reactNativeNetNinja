@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   textTitle: {
-    fontWeight: "bold",
     fontSize: 17,
+    fontFamily: "lato-bold",
   },
 });
