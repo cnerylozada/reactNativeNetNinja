@@ -9,8 +9,6 @@ import {
 import ToolBar from "./components/toolbar";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
-import ReviewDetail from "./components/review-detail";
-import AboutPage from "./components/about-page";
 
 const getLatoFont = () =>
   Font.loadAsync({
@@ -24,9 +22,7 @@ export default function App() {
     return (
       <SafeAreaView style={styles.container}>
         <ToolBar />
-        <View style={{ padding: 15 }}>
-          <AboutPage></AboutPage>
-        </View>
+        <View style={{ padding: 15 }}></View>
       </SafeAreaView>
     );
   } else {
