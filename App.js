@@ -1,8 +1,16 @@
 import React, { useState } from "react";
-import { StyleSheet, SafeAreaView, Platform, StatusBar } from "react-native";
+import {
+  StyleSheet,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+  View,
+} from "react-native";
 import ToolBar from "./components/toolbar";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
+import ReviewDetail from "./components/review-detail";
+import AboutPage from "./components/about-page";
 
 const getLatoFont = () =>
   Font.loadAsync({
@@ -15,7 +23,10 @@ export default function App() {
   if (isFontLoaded) {
     return (
       <SafeAreaView style={styles.container}>
-        <ToolBar></ToolBar>
+        <ToolBar />
+        <View style={{ padding: 15 }}>
+          <AboutPage></AboutPage>
+        </View>
       </SafeAreaView>
     );
   } else {
