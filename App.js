@@ -1,29 +1,16 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  SafeAreaView,
-  Platform,
-  StatusBar,
-  View,
-} from "react-native";
-import ToolBar from "./components/toolbar";
-import * as Font from "expo-font";
 import { AppLoading } from "expo";
-
-const getLatoFont = () =>
-  Font.loadAsync({
-    "lato-bold": require("./assets/fonts/Lato-Bold.ttf"),
-    "lato-regular": require("./assets/fonts/Lato-Regular.ttf"),
-  });
+import { NavigationContainer } from "@react-navigation/native";
+import { getLatoFont } from "./utils/load-fonts";
+import MainAppOutlet from "./routes/main-app-outlet";
 
 export default function App() {
   const [isFontLoaded, setFontLoaded] = useState(false);
   if (isFontLoaded) {
     return (
-      <SafeAreaView style={styles.container}>
-        <ToolBar />
-        <View style={{ padding: 15 }}></View>
-      </SafeAreaView>
+      <NavigationContainer>
+        <MainAppOutlet />
+      </NavigationContainer>
     );
   } else {
     return (
@@ -34,10 +21,3 @@ export default function App() {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
-});
