@@ -1,8 +1,7 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
-import ItemList from "./item-list";
+import { View, StyleSheet, TouchableOpacity, Button } from "react-native";
+import ItemList from "../_commons/item-list";
 import { MaterialIcons } from "@expo/vector-icons";
-import { TouchableHighlight } from "react-native-gesture-handler";
 
 const gamesTitle = [
   "Zelda, Breath of Fresh Air",
@@ -10,7 +9,10 @@ const gamesTitle = [
   "Not So Final Fantasy",
 ];
 
-const HomePage = () => {
+const HomePage = ({ navigation }) => {
+  const goToReviewDetail = () => {
+    navigation.navigate("review-detail");
+  };
   return (
     <View style={styles.container}>
       <TouchableOpacity style={{ marginBottom: 30 }}>
@@ -21,6 +23,7 @@ const HomePage = () => {
           <ItemList key={_} textContent={_} />
         ))}
       </View>
+      <Button title="To review detail" onPress={goToReviewDetail}></Button>
     </View>
   );
 };
