@@ -1,19 +1,16 @@
 import React from "react";
 import { View, Text } from "react-native";
 import ReviewDetail from "../_commons/review-detail";
+import gamesTitle from "../data/games-data";
 
-const ReviewDetailPage = () => {
+const ReviewDetailPage = ({ title, detail, rating }) => {
+  const gameDefault = gamesTitle[0];
   return (
-    <View>
-      <Text style={{ fontFamily: "lato-bold", marginBottom: 10 }}>
-        Review Detail Page
-      </Text>
-      <ReviewDetail
-        title="Zelda, Breth of Fresh Air"
-        detail="lorem ipsum"
-        rating="3"
-      />
-    </View>
+    <ReviewDetail
+      title={gameDefault.title}
+      detail={gameDefault.detail}
+      rating={gameDefault.rating}
+    />
   );
 };
 

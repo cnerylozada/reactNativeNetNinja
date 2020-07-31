@@ -14,7 +14,7 @@ const ItemList = ({ textContent }) => {
 export default ItemList;
 const styles = StyleSheet.create({
   itemContainer: {
-    padding: 14,
+    padding: 16,
     backgroundColor: "#ecf0f0",
     shadowColor: "#000",
     shadowOffset: {

@@ -8,7 +8,7 @@ import ReviewDetailPage from "../components/review-detail-page";
 const { Navigator, Screen } = createStackNavigator();
 
 export const HomeStackNavigator = () => (
-  <Navigator headerMode="none">
+  <Navigator headerMode="none" initialRouteName="home">
     <Screen name="home" component={HomePage} />
     <Screen name="review-detail" component={ReviewDetailPage} />
   </Navigator>
