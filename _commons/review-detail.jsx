@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import Rating from "./rating";
 
 const ReviewDetail = ({ title, detail, rating }) => {
   return (
@@ -16,9 +17,7 @@ const ReviewDetail = ({ title, detail, rating }) => {
           </Text>
         </View>
         <View style={{ flexDirection: "row" }}>
-          <AntDesign name="staro" size={20} color="blue" />
-          <AntDesign name="staro" size={20} color="blue" />
-          <AntDesign name="staro" size={20} color="blue" />
+          <Rating rating={rating} />
         </View>
       </View>
     </View>

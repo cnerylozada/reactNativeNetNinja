@@ -3,11 +3,9 @@ import { TouchableHighlight, View, Text, StyleSheet } from "react-native";
 
 const ItemList = ({ textContent }) => {
   return (
-    <TouchableHighlight>
-      <View style={styles.itemContainer}>
-        <Text style={styles.textContent}>{textContent}</Text>
-      </View>
-    </TouchableHighlight>
+    <View style={styles.itemContainer}>
+      <Text style={styles.textContent}>{textContent}</Text>
+    </View>
   );
 };
 

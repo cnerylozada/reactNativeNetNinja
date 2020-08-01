@@ -4,17 +4,19 @@ import { MaterialIcons } from "@expo/vector-icons";
 import GamesList from "./games-list";
 
 const HomePage = ({ navigation }) => {
-  const goToReviewDetail = () => {
-    navigation.navigate("review-detail");
+  const goToReviewDetail = (reviewId) => {
+    navigation.navigate("review-detail", {
+      id: reviewId,
+    });
   };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={{ marginBottom: 30 }}>
         <MaterialIcons name="add-box" size={30} color="#273c75" />
       </TouchableOpacity>
-      <Button title="review_detail" onPress={goToReviewDetail}></Button>
-      <View style={{ width: "100%" }}>
-        <GamesList />
+      <View style={styles.list}>
+        <GamesList goToReviewDetail={goToReviewDetail} />
       </View>
     </View>
   );
@@ -26,5 +28,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+  },
+  list: {
+    flex: 1,
+    width: "100%",
   },
 });
