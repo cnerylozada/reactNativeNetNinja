@@ -1,12 +1,13 @@
 import React from "react";
 import { StyleSheet, StatusBar, SafeAreaView, View } from "react-native";
 import { HomeStackNavigator } from "./home-stack-navigator";
+import { RootDrawerNavigator } from "./drawer-navigator";
 
 const MainAppOutlet = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.routerContent}>
-        <HomeStackNavigator />
+        <RootDrawerNavigator />
       </View>
     </SafeAreaView>
   );
@@ -21,6 +22,5 @@ const styles = StyleSheet.create({
   },
   routerContent: {
     flex: 1,
-    // padding: 15,
   },
 });

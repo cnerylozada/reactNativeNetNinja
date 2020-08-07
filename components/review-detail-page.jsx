@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text } from "react-native";
 import ReviewDetail from "../_commons/review-detail";
-import gamesTitle from "../data/games-data";
 import { globalStyles } from "../styles/global";
+import { gamesTitle } from "../data/games-data";
 
 const ReviewDetailPage = ({ route }) => {
   const { id } = route.params;
