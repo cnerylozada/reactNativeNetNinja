@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
+import { globalStyles } from "../styles/global";
 
 const ToolBar = () => {
   return (
@@ -18,7 +19,7 @@ const ToolBar = () => {
           size={20}
           color="blue"
         />
-        <Text style={styles.textTitle}>Game Zone</Text>
+        <Text style={[globalStyles.toolBarTitle]}>Game Zone</Text>
       </View>
     </View>
   );
@@ -30,10 +31,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "center",
-    backgroundColor: "#ecf0f1",
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#95a5a6",
+    backgroundColor: "red",
   },
   sideMenu: {
     position: "absolute",
@@ -45,9 +43,5 @@ const styles = StyleSheet.create({
   },
   iconTitle: {
     marginRight: 15,
-  },
-  textTitle: {
-    fontSize: 17,
-    fontFamily: "lato-bold",
   },
 });

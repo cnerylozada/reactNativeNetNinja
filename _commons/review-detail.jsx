@@ -13,7 +13,7 @@ const ReviewDetail = ({ title, detail, rating }) => {
       </View>
       <View style={styles.ratingSection}>
         <View style={{ marginRight: 10 }}>
-          <Text style={[globalStyles.subTitle]}>GameZone rating:</Text>
+          <Text style={[globalStyles.subTitleText]}>GameZone rating:</Text>
         </View>
         <View style={{ flexDirection: "row" }}>
           <Rating rating={rating} />

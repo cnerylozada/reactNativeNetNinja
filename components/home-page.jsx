@@ -3,6 +3,7 @@ import { View, StyleSheet, TouchableOpacity, Button } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import GamesList from "./games-list";
 import { globalStyles } from "../styles/global";
+import ToolBar from "../_commons/toolbar";
 
 const HomePage = ({ navigation }) => {
   const goToReviewDetail = (reviewId) => {

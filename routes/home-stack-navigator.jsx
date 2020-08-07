@@ -2,6 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomePage from "../components/home-page";
 import ReviewDetailPage from "../components/review-detail-page";
+import ToolBar from "../_commons/toolbar";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -18,7 +19,13 @@ export const HomeStackNavigator = () => (
       },
     }}
   >
-    <Screen name="home" component={HomePage} options={{ title: "Game Zone" }} />
+    <Screen
+      name="home"
+      component={HomePage}
+      options={{
+        headerTitle: (props) => <ToolBar {...props} />,
+      }}
+    />
     <Screen
       name="review-detail"
       component={ReviewDetailPage}

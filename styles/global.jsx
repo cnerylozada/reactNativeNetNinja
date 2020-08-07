@@ -1,14 +1,21 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform, StatusBar } from "react-native";
 
 export const globalStyles = StyleSheet.create({
+  toolBarPaddingTop: {
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
   content: {
     padding: 15,
+  },
+  toolBarTitle: {
+    fontSize: 17,
+    fontFamily: "lato-bold",
   },
   titleText: {
     fontFamily: "lato-bold",
     fontSize: 14,
   },
-  subTitle: {
+  subTitleText: {
     fontFamily: "lato-regular",
   },
   paragraphText: {
@@ -26,5 +33,5 @@ export const globalStyles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
     elevation: 2,
-  }
+  },
 });
