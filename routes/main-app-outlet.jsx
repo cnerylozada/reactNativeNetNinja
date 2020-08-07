@@ -1,23 +1,10 @@
 import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet, StatusBar, SafeAreaView, View } from "react-native";
-import HomePage from "../components/home-page";
-import ToolBar from "../components/toolbar";
-import ReviewDetailPage from "../components/review-detail-page";
-
-const { Navigator, Screen } = createStackNavigator();
-
-export const HomeStackNavigator = () => (
-  <Navigator headerMode="none" initialRouteName="home">
-    <Screen name="home" component={HomePage} />
-    <Screen name="review-detail" component={ReviewDetailPage} />
-  </Navigator>
-);
+import { HomeStackNavigator } from "./home-stack-navigator";
 
 const MainAppOutlet = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <ToolBar />
       <View style={styles.routerContent}>
         <HomeStackNavigator />
       </View>
@@ -34,6 +21,6 @@ const styles = StyleSheet.create({
   },
   routerContent: {
     flex: 1,
-    padding: 15,
+    // padding: 15,
   },
 });

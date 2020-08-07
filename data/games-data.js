@@ -1,4 +1,4 @@
-const gamesTitle = [
+export const gamesTitle = [
   {
     id: "000001",
     title: "Zelda, Breath of Fresh Air",
@@ -71,4 +71,4 @@ const gamesTitle = [
   },
 ];
 
-export default gamesTitle;
+// export default gamesTitle;

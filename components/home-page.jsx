@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, TouchableOpacity, Button } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import GamesList from "./games-list";
+import { globalStyles } from "../styles/global";
 
 const HomePage = ({ navigation }) => {
   const goToReviewDetail = (reviewId) => {
@@ -11,7 +12,7 @@ const HomePage = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[globalStyles.content, styles.container]}>
       <TouchableOpacity style={{ marginBottom: 30 }}>
         <MaterialIcons name="add-box" size={30} color="#273c75" />
       </TouchableOpacity>
