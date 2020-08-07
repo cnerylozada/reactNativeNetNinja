@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, StatusBar, SafeAreaView, View } from "react-native";
-import { HomeStackNavigator } from "./home-stack-navigator";
 import { RootDrawerNavigator } from "./drawer-navigator";
 
 const MainAppOutlet = () => {

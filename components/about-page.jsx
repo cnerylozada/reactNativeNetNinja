@@ -1,14 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { globalStyles } from "../styles/global";
 
 const AboutPage = () => {
   return (
-    <View>
+    <View style={[globalStyles.content]}>
       <View style={styles.mainSection}>
         <Text style={styles.pageTitle}>About Page</Text>
       </View>
       <View>
-        <Text style={styles.pageContent}>
+        <Text style={[globalStyles.paragraphText]}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
@@ -32,11 +33,5 @@ const styles = StyleSheet.create({
   pageTitle: {
     fontFamily: "lato-bold",
     fontSize: 16,
-  },
-  pageContent: {
-    fontFamily: "lato-regular",
-    fontSize: 13,
-    textAlign: "justify",
-    color: "#747d8c",
   },
 });

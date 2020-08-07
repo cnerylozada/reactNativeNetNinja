@@ -1,9 +1,10 @@
 import React from "react";
 import { TouchableHighlight, View, Text, StyleSheet } from "react-native";
+import { globalStyles } from "../styles/global";
 
 const ItemList = ({ textContent }) => {
   return (
-    <View style={styles.itemContainer}>
+    <View style={[globalStyles.shadowBox, styles.itemContainer]}>
       <Text style={styles.textContent}>{textContent}</Text>
     </View>
   );
@@ -14,14 +15,6 @@ const styles = StyleSheet.create({
   itemContainer: {
     padding: 18,
     backgroundColor: "#dff9fb",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
-    elevation: 2,
     marginBottom: 16,
   },
   textContent: {
