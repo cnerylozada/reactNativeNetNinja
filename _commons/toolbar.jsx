@@ -1,11 +1,20 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { globalStyles } from "../styles/global";
 
 const ToolBar = () => {
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require("../assets/toolBarBackground.png")}
+      style={styles.container}
+    >
       <TouchableOpacity
         style={styles.sideMenu}
         onPress={() => console.log("sidemenu pressed")}
@@ -21,7 +30,7 @@ const ToolBar = () => {
         />
         <Text style={[globalStyles.toolBarTitle]}>Game Zone</Text>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
