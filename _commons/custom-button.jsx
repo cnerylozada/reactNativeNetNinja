@@ -1,14 +1,12 @@
 import React from "react";
-import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { globalStyles } from "../styles/global";
 
 const CustomButton = ({ title }) => {
   return (
-    <TouchableOpacity>
-      <View style={styles.button}>
-        <Text style={[globalStyles.titleText, styles.title]}>{title}</Text>
-      </View>
-    </TouchableOpacity>
+    <View style={styles.button}>
+      <Text style={[globalStyles.titleText, styles.title]}>{title}</Text>
+    </View>
   );
 };
 
