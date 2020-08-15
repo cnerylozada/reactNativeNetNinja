@@ -1,28 +1,33 @@
 import React from "react";
-import { Modal, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Modal, View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { globalStyles } from "../styles/global";
 import CustomButton from "../_commons/custom-button";
 import CustomInput from "../_commons/custom-input";
 import { Formik } from "formik";
 
-const ModalForm = ({ isModalVisible, setVisibility }) => {
+const ModalForm = ({ isModalVisible, setVisibility, addNewGameTitle }) => {
   const gameForm = {
     title: "",
-    details: "",
+    detail: "",
     rating: "",
   };
 
-  const saveGameForm = (values) => console.log(values);
+  const saveGameForm = (value) => {
+    setVisibility(false);
+    addNewGameTitle(value);
+  };
   return (
     <Modal visible={isModalVisible} animationType="slide">
       <View style={[globalStyles.content]}>
-        <FontAwesome
-          name="window-close"
-          size={30}
-          style={styles.closeModalIcon}
-          onPress={() => setVisibility(false)}
-        />
+        <Text style={{ marginVertical: 30, textAlign: "center" }}>
+          <FontAwesome
+            name="window-close"
+            size={30}
+            style={styles.closeModalIcon}
+            onPress={() => setVisibility(false)}
+          />
+        </Text>
         <View>
           <Formik initialValues={gameForm} onSubmit={saveGameForm}>
             {({ handleChange, values, handleSubmit }) => (
@@ -34,8 +39,8 @@ const ModalForm = ({ isModalVisible, setVisibility }) => {
                   placeholder="Review title"
                 />
                 <CustomInput
-                  name="details"
-                  value={values.details}
+                  name="detail"
+                  value={values.detail}
                   handleChange={handleChange}
                   placeholder="Review details"
                 />
@@ -62,9 +67,6 @@ export default ModalForm;
 
 const styles = StyleSheet.create({
   closeModalIcon: {
-    textAlign: "center",
-    marginTop: 30,
-    marginBottom: 30,
     color: "#273c75",
   },
 });

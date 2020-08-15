@@ -4,14 +4,22 @@ import { MaterialIcons } from "@expo/vector-icons";
 import GamesList from "./games-list";
 import { globalStyles } from "../styles/global";
 import ModalForm from "./modal-form";
+import { gamesTitle } from "../data/games-data";
 
 const HomePage = ({ navigation }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [listOfGames, setListOfGames] = useState(gamesTitle);
+
   const openModal = () => setIsModalVisible(true);
-  const goToReviewDetail = (reviewId) => {
+  const goToReviewDetail = (review) => {
     navigation.navigate("review-detail", {
-      id: reviewId,
+      review: review,
     });
+  };
+
+  const addNewGameTitle = (game) => {
+    const newGame = { ...game, id: `0000${listOfGames.length + 1}` };
+    setListOfGames((games) => [newGame, ...games]);
   };
 
   return (
@@ -19,12 +27,13 @@ const HomePage = ({ navigation }) => {
       <ModalForm
         isModalVisible={isModalVisible}
         setVisibility={setIsModalVisible}
+        addNewGameTitle={addNewGameTitle}
       />
       <TouchableOpacity style={{ marginBottom: 30 }} onPress={openModal}>
         <MaterialIcons name="add-box" size={30} style={styles.openModalIcon} />
       </TouchableOpacity>
       <View style={styles.list}>
-        <GamesList goToReviewDetail={goToReviewDetail} />
+        <GamesList data={listOfGames} goToReviewDetail={goToReviewDetail} />
       </View>
     </View>
   );

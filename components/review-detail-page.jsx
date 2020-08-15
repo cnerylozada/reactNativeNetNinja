@@ -5,14 +5,13 @@ import { globalStyles } from "../styles/global";
 import { gamesTitle } from "../data/games-data";
 
 const ReviewDetailPage = ({ route }) => {
-  const { id } = route.params;
-  const gameDefault = gamesTitle.find((_) => _.id === id);
+  const { review } = route.params;
   return (
     <View style={[globalStyles.content]}>
       <ReviewDetail
-        title={gameDefault.title}
-        detail={gameDefault.detail}
-        rating={gameDefault.rating}
+        title={review.title}
+        detail={review.detail}
+        rating={review.rating}
       />
     </View>
   );

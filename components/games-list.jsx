@@ -1,14 +1,13 @@
 import React from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import ItemList from "../_commons/item-list";
-import { gamesTitle } from "../data/games-data";
 
-const GamesList = ({ goToReviewDetail }) => {
+const GamesList = ({ data, goToReviewDetail }) => {
   return (
     <FlatList
-      data={gamesTitle}
+      data={data}
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={() => goToReviewDetail(item.id)}>
+        <TouchableOpacity onPress={() => goToReviewDetail(item)}>
           <ItemList key={item.id} textContent={item.title} />
         </TouchableOpacity>
       )}
