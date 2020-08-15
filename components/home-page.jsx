@@ -1,14 +1,26 @@
-import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, Modal } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import GamesList from "./games-list";
 import { globalStyles } from "../styles/global";
 import ModalForm from "./modal-form";
 import { gamesTitle } from "../data/games-data";
+import axios from "axios";
 
 const HomePage = ({ navigation }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [listOfGames, setListOfGames] = useState(gamesTitle);
+  const [customers, setCustomers] = useState([]);
+
+  const getCustomers = async () => {
+    const { data } = await axios.get("http://192.168.0.16:8000/api/customers");
+    setCustomers([...data]);
+  };
+
+  useEffect(() => {
+    getCustomers();
+    console.log(customers);
+  }, []);
 
   const openModal = () => setIsModalVisible(true);
   const goToReviewDetail = (review) => {
