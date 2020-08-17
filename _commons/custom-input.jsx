@@ -1,24 +1,35 @@
 import React from "react";
-import { StyleSheet, TextInput } from "react-native";
+import { StyleSheet, TextInput, Text, View } from "react-native";
+import { globalStyles } from "../styles/global";
 
-const CustomInput = ({ name, handleChange, ...rest }) => {
+const CustomInput = ({ name, inputProps, ...rest }) => {
+  const { handleChange, values, errors, handleBlur } = inputProps;
   return (
-    <TextInput
-      style={styles.input}
-      onChangeText={handleChange(name)}
-      {...rest}
-    />
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        onChangeText={handleChange(name)}
+        onBlur={handleBlur(name)}
+        value={values[name]}
+        {...rest}
+      />
+      {errors[name] && (
+        <Text style={globalStyles.errorMessage}>{errors[name]}</Text>
+      )}
+    </View>
   );
 };
 
 export default CustomInput;
 const styles = StyleSheet.create({
+  container: {
+    marginBottom: 20,
+  },
   input: {
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderColor: "gray",
     borderWidth: 1,
     borderRadius: 3,
-    marginBottom: 25,
   },
 });

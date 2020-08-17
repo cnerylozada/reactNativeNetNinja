@@ -13,6 +13,7 @@ import { globalStyles } from "../styles/global";
 import CustomButton from "../_commons/custom-button";
 import CustomInput from "../_commons/custom-input";
 import { Formik } from "formik";
+import * as Yup from "yup";
 
 const ModalForm = ({ isModalVisible, setVisibility, addNewGameTitle }) => {
   const gameForm = {
@@ -20,6 +21,12 @@ const ModalForm = ({ isModalVisible, setVisibility, addNewGameTitle }) => {
     detail: "",
     rating: "",
   };
+
+  const gameFormSchema = Yup.object().shape({
+    title: Yup.string().required().min(5),
+    detail: Yup.string().required().min(10),
+    rating: Yup.number().integer().required().min(1).max(5),
+  });
 
   const saveGameForm = (value, actions) => {
     addNewGameTitle(value);
@@ -39,33 +46,42 @@ const ModalForm = ({ isModalVisible, setVisibility, addNewGameTitle }) => {
             />
           </Text>
           <View>
-            <Formik initialValues={gameForm} onSubmit={saveGameForm}>
-              {({ handleChange, values, handleSubmit }) => (
-                <>
-                  <CustomInput
-                    name="title"
-                    value={values.title}
-                    handleChange={handleChange}
-                    placeholder="Review title"
-                  />
-                  <CustomInput
-                    name="detail"
-                    value={values.detail}
-                    handleChange={handleChange}
-                    placeholder="Review details"
-                  />
-                  <CustomInput
-                    name="rating"
-                    value={values.rating}
-                    handleChange={handleChange}
-                    placeholder="Rating (1 -5)"
-                    keyboardType="numeric"
-                  />
-                  <TouchableOpacity onPress={handleSubmit}>
-                    <CustomButton title="submit" />
-                  </TouchableOpacity>
-                </>
-              )}
+            <Formik
+              initialValues={gameForm}
+              validationSchema={gameFormSchema}
+              onSubmit={saveGameForm}
+            >
+              {({ handleChange, values, handleSubmit, errors, handleBlur }) => {
+                const inputProps = {
+                  values,
+                  handleChange,
+                  errors,
+                  handleBlur,
+                };
+                return (
+                  <>
+                    <CustomInput
+                      name="title"
+                      placeholder="Review title"
+                      inputProps={inputProps}
+                    />
+                    <CustomInput
+                      name="detail"
+                      placeholder="Review details"
+                      inputProps={inputProps}
+                    />
+                    <CustomInput
+                      name="rating"
+                      placeholder="Rating (1 -5)"
+                      keyboardType="numeric"
+                      inputProps={inputProps}
+                    />
+                    <TouchableOpacity onPress={handleSubmit}>
+                      <CustomButton title="submit" />
+                    </TouchableOpacity>
+                  </>
+                );
+              }}
             </Formik>
           </View>
         </View>

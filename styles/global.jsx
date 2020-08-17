@@ -34,4 +34,11 @@ export const globalStyles = StyleSheet.create({
     shadowRadius: 1.41,
     elevation: 2,
   },
+  errorMessage: {
+    marginTop: 5,
+    textTransform: "capitalize",
+    fontFamily: "lato-regular",
+    fontSize: 13,
+    color: "red",
+  },
 });
