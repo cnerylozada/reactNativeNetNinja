@@ -3,17 +3,17 @@ import { StyleSheet, TextInput, Text, View } from "react-native";
 import { globalStyles } from "../styles/global";
 
 const CustomInput = ({ name, inputProps, ...rest }) => {
-  const { handleChange, values, errors, handleBlur } = inputProps;
+  const { handleChange, values, errors, touched, setFieldTouched } = inputProps;
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
         onChangeText={handleChange(name)}
-        onBlur={handleBlur(name)}
         value={values[name]}
+        onBlur={() => setFieldTouched(name)}
         {...rest}
       />
-      {errors[name] && (
+      {touched[name] && errors[name] && (
         <Text style={globalStyles.errorMessage}>{errors[name]}</Text>
       )}
     </View>

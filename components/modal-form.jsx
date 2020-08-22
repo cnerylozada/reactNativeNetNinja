@@ -51,12 +51,20 @@ const ModalForm = ({ isModalVisible, setVisibility, addNewGameTitle }) => {
               validationSchema={gameFormSchema}
               onSubmit={saveGameForm}
             >
-              {({ handleChange, values, handleSubmit, errors, handleBlur }) => {
+              {({
+                handleChange,
+                values,
+                handleSubmit,
+                errors,
+                touched,
+                setFieldTouched,
+              }) => {
                 const inputProps = {
                   values,
                   handleChange,
                   errors,
-                  handleBlur,
+                  touched,
+                  setFieldTouched,
                 };
                 return (
                   <>
