@@ -58,6 +58,7 @@ const ModalForm = ({ isModalVisible, setVisibility, addNewGameTitle }) => {
                 errors,
                 touched,
                 setFieldTouched,
+                isValid,
               }) => {
                 const inputProps = {
                   values,
@@ -84,7 +85,10 @@ const ModalForm = ({ isModalVisible, setVisibility, addNewGameTitle }) => {
                       keyboardType="numeric"
                       inputProps={inputProps}
                     />
-                    <TouchableOpacity onPress={handleSubmit}>
+                    <TouchableOpacity
+                      disabled={!isValid}
+                      onPress={handleSubmit}
+                    >
                       <CustomButton title="submit" />
                     </TouchableOpacity>
                   </>
